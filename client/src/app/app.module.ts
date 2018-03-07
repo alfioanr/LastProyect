@@ -14,9 +14,10 @@ import { SessionService } from "../services/session.service";
 import { JuniorService } from "../services/junior.service";
 import { LoginComponentComponent } from './login-component/login-component.component';
 import { PostService } from "../services/post.service";
+import { CreatepostComponent } from './createpost/createpost.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, JuniorComponent, ProfileComponent, DevelopfatherComponent, ReadpostComponent, LoginComponentComponent],
+  declarations: [AppComponent, HomeComponent, JuniorComponent, ProfileComponent, DevelopfatherComponent, ReadpostComponent, LoginComponentComponent, CreatepostComponent],
   imports: [BrowserModule, RouterModule.forRoot(routes), HttpModule, FormsModule],
   providers: [SessionService, JuniorService, PostService],
   bootstrap: [AppComponent]

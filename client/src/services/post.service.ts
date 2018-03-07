@@ -18,13 +18,13 @@ export class PostService {
 
   add(post) {
     return this.http
-      .put(`${this.BASE_URL}/users/${post.id}`, post)
+      .put(`${this.BASE_URL}/post/${post.id}`, post)
       .map(res => res.json());
   }
 
   remove(post) {
     return this.http
-      .delete(`${this.BASE_URL}/users/${post.id}`, post)
+      .delete(`${this.BASE_URL}/post/${post.id}`, post)
       .map(res => res.json());
   }
 }

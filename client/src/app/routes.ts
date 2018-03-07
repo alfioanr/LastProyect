@@ -6,6 +6,7 @@ import { ProfileComponent } from "./profile/profile.component";
 import { DevelopfatherComponent } from "./developfather/developfather.component";
 import { ReadpostComponent } from "./readpost/readpost.component";
 import { LoginComponentComponent } from './login-component/login-component.component';
+import { CreatepostComponent } from "./createpost/createpost.component";
 
 export const routes: Routes = [
   { path: "", component: HomeComponent  },
@@ -15,5 +16,6 @@ export const routes: Routes = [
   {path:"profile", component:ProfileComponent},
   {path:"beadopted", component:DevelopfatherComponent},
   {path:"readposts", component:ReadpostComponent},
+  {path:"createpost", component:CreatepostComponent},
   { path: "**", redirectTo: "" }
 ];
