@@ -1,4 +1,4 @@
-<body>
+<div class = "body">
 
   <div class="container-fluid">
     <div class="row">
@@ -37,8 +37,8 @@
             />
             <p>Someday, and that day may never come, I will call upon you to do a service for me. But until that day, accept
               this as a gift</p>
-            <h3>Developer Father List</h3>
                 <div>
+                  <h3>you first developer father</h3>
                   
                 </div>
 
@@ -46,8 +46,9 @@
           </div>
           <div class="col-md-12 col-md-offset-4">
             <ul>
-              <li>
-                lista de post
+              <li *ngFor="let p of post">
+                {{p.title}}
+                {{p.content}}
               </li>
 
             </ul>
@@ -61,4 +62,4 @@
       GaasNipi Developing
     </footer>
   </div>
-</body>
+</div>

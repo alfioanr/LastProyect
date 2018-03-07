@@ -8,14 +8,15 @@ import {HttpModule, Http } from '@angular/http'
 })
 export class JuniorComponent implements OnInit {
   users = [];
+  
   constructor(private user:JuniorService) { }
 
   ngOnInit() {
     console.log("Hola")
     this.user.getList()
       .subscribe((users) => {
-        this.user = users;
-        console.log(this.user)
+        this.users = users;
+        console.log(this.users)
   })
 }
 }

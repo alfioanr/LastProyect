@@ -1,23 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
-var bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
+const debug = require("debug")("server:auth");
+const passport = require("passport");
 
-/* CRUD -> READ ALL */
-router.get("/", (req, res, next) => {
-  User.find()
-  .then((users) => {
-    res.status(200).json(users);
-  })
-  .catch(err => console.log(err))
-});
 let loginPromise = (req, user) => {
   return new Promise((resolve, reject) => {
     req.login(user, e => (e ? reject(e) : resolve(user)));
   });
 };
 
-// CRUD -> CREATE USER IN DATABASE
 router.post("/signup", (req, res, next) => {
   const {
     name,
@@ -36,7 +29,15 @@ router.post("/signup", (req, res, next) => {
         return res.status(400).json({ message: "The username already exists" });
       const salt = bcrypt.genSaltSync(10);
       const hashPass = bcrypt.hashSync(password, salt);
-      const theUser = new User({ username, password: hashPass });
+      const theUser = new User({
+        name,
+        lastName,
+        email,
+        username,
+        password:hashPass,
+        familiarTechnologys,
+        friends
+      });
       return theUser
         .save()
         .then(user => loginPromise(req, user))
@@ -50,7 +51,25 @@ router.post("/signup", (req, res, next) => {
       res.status(500).json(e);
     });
 });
-// DELETE USER FROM DB
+
+router.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, theUser, failureDetails) => {
+    if (err) return res.status(500).json({ message: "Something went wrong" });
+    if (!theUser) return res.status(401).json(failureDetails);
+    loginPromise(req, theUser)
+      .then(() => res.status(200).json(req.user))
+      .catch(e => res.status(500).json({ message: "Something went wrong" }));
+  })(req, res, next);
+});
+
+router.get("/", (req, res, next) => {
+  User.find()
+    .then(users => {
+      res.status(200).json(users);
+    })
+    .catch(err => console.log(err));
+});
+
 router.delete("/profile/delete/:id", (req, res) => {
   const id = req.params.id;
 
@@ -58,10 +77,10 @@ router.delete("/profile/delete/:id", (req, res) => {
     if (err) {
       return next(err);
     }
-    return res.status(200).json({message:"Post Deleted"})
+    return res.status(200).json({ message: "Post Deleted" });
   });
 });
-/* CRUD -> UPDATE DATABASE */
+
 router.put("/profile/edit/:id", (req, res, next) => {
   res.send({
     name: req.body.name,
@@ -79,6 +98,20 @@ router.put("/profile/edit/:id", (req, res, next) => {
     }
     res.status(200).json({ message: "user actualizado" });
   });
+  router.get("/logout", (req, res, next) => {
+    req.logout();
+    res.status(200).json({ message: "Success" });
+  });
+});
+
+router.get("/loggedin", (req, res, next) => {
+  if (req.isAuthenticated()) return res.status(200).json(req.user);
+  res.status(403).json({ message: "Unauthorized" });
+});
+
+router.get("/logout", (req, res, next) => {
+  req.logout();
+  res.status(200).json({ message: "Success" });
 });
 
 module.exports = router;

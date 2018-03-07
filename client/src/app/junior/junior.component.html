@@ -1,5 +1,5 @@
-<body>
-
+<div class = "body">
+<div *ngIf="this.users">  
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
@@ -43,6 +43,7 @@
       </div>
     </div>
   </div>
+ 
   <div *ngFor="let u of users">
     <p> {{ u.name }} </p>
   </div>
@@ -51,6 +52,5 @@
       GaasNipi Developing
     </footer>
   </div>
-</body>
-
-
+</div>
+</div>
