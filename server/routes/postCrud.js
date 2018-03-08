@@ -12,7 +12,8 @@ router.get("/", (req, res, next) => {
 });
 
 router.get("/detail/:id", (req, res, next) => {
-  Post.findOne({ _id: req.body.id })
+  const detailPostId = req.params.id;
+  Post.findById(detailPostId)
     .then(post => {
       res.status(200).json(post);
     })

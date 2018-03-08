@@ -49,14 +49,14 @@
 
 
           </div>
-          <div class="col-md-12 col-md-offset-4">
+          <div class="col-md-12 col-xs-offset-1">
             <h2>
               Post List
             </h2>
             <ul>
               <li *ngFor="let p of post">
                 {{p.title}}
-                {{p.content}}
+               <a [routerLink]="['/postdetail',p._id]"><button>detail</button></a>
               </li>
 
             </ul>

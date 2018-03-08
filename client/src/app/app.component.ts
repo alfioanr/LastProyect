@@ -11,6 +11,6 @@ export class AppComponent {
   user;
   constructor(public session: SessionService) {
     this.user = this.session.getUser();
-    //this.session.getUserEvent().subscribe(user => (this.user = user));
+    // this.session.getUserEvent().subscribe(user => (this.user = user));
   }
 }

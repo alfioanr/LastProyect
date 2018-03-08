@@ -10,8 +10,11 @@ const index = require('./routes/index');
 const users = require('./routes/usersCrud');
 const router = express.Router();
 const post = require('./routes/postCrud')
-const cors = require ('express-cors')
+const cors = require ('cors')
 const app = express();
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+
 mongoose.connect(process.env.MONGO_DBURL)
   .then(() => console.log("Conected to DB"))
   .catch(e => console.log("Error connecting to DB"));
@@ -26,11 +29,30 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+var whitelist = ["http://localhost:4200"];
+var corsOptions = {
+  origin: function(origin, callback) {
+    var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+    callback(null, originIsWhitelisted);
+  },
+  credentials: true
+};
+app.use(cors(corsOptions));
+
 app.use(
-  cors({
-    allowedOrigins: ["http://localhost:4200"]
+  session({
+    secret: "angular auth passport secret shh",
+    resave: true,
+    saveUninitialized: true,
+    cookie: { httpOnly: true, maxAge: 2419200000 },
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
   })
 );
+
+require("./passport")(app);
+
+
+
 app.use('/', index);
 app.use('/users', users);
 app.use('/post', post)

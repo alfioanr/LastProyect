@@ -13,7 +13,8 @@ export class PostService {
     return this.http.get(`${this.BASE_URL}/post`).map(res => res.json());
   }
   get(id) {
-    return this.http.get(`${this.BASE_URL}/post/${id}`).map(res => res.json());
+    console.log("HOLAAAAAAAAAAAAAAAAAAAAAAAAA")
+    return this.http.get(`${this.BASE_URL}/post/detail/${id}`).map(res => res.json());
   }
 
   add(post) {

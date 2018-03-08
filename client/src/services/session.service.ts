@@ -49,7 +49,6 @@ export class SessionService {
   }
 
   handleError(e) {
-    console.log(e);
     return Observable.throw(e.json().message);
   }
 

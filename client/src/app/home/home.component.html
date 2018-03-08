@@ -1,4 +1,4 @@
-<div class = "body">
+<div class="body">
 
   <div class="container-fluid">
     <div class="row">
@@ -22,7 +22,7 @@
           <div class="col-md-4">
             <img alt="Bootstrap Image Preview" src="https://davidwalsh.name/demo/nodejs.png" class="center-block" width="250px" alt=""
             />
-          
+
             <p>Someday, and that day may never come, I will call upon you to do a service for me. But until that day, accept
               this as a gift</p>
           </div>
@@ -33,10 +33,12 @@
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-1">
-              <a href="#" class=" btn btn-lg btn-primary" type="button">Login</a>
-              <button type="button" class="btn btn-lg btn-primary">
-                Sign Up!
-              </button>
+              <a [routerLink]="['/login']" class=" btn btn-lg btn-primary" type="button">Login</a>
+              <a [routerLink]="['/signup']">
+                <button type="button" class="btn btn-lg btn-primary">
+                  Sign Up!
+                </button>
+              </a>
 
             </div>
           </div>

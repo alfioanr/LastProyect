@@ -15,17 +15,13 @@ export class CreatepostComponent implements OnInit {
   ngOnInit() {}
 
   enviarForm(p) {
-    console.log("Tonterias a mil", p.form.controls.title.value);
-    console.log("Tonterias a mil", p.form.controls.content.value);
-    this.postNew = {
- 
-      title: p.form.controls.title.value,
+      this.postNew = {
+       title: p.form.controls.title.value,
       content: p.form.controls.content.value
     };
     
     this.post.add(this.postNew).subscribe(posts => {
       console.log(this.post);
     });
-    console.log("holis")
   }
 }

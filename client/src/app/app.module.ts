@@ -15,10 +15,12 @@ import { LoginComponentComponent } from './login-component/login-component.compo
 import { PostService } from "../services/post.service";
 import { CreatepostComponent } from './createpost/createpost.component';
 import { EditpostComponent } from './editpost/editpost.component';
+import { SignupComponent } from './signup/signup.component';
+import { PostdetailComponent } from './postdetail/postdetail.component';
 
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, JuniorComponent, ProfileComponent, ReadpostComponent, LoginComponentComponent, CreatepostComponent, EditpostComponent],
+  declarations: [AppComponent, HomeComponent, JuniorComponent, ProfileComponent, ReadpostComponent, LoginComponentComponent, CreatepostComponent, EditpostComponent, SignupComponent, PostdetailComponent],
   imports: [BrowserModule, RouterModule.forRoot(routes), HttpModule, FormsModule],
   providers: [SessionService, JuniorService, PostService],
   bootstrap: [AppComponent]
