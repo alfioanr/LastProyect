@@ -55,30 +55,37 @@
       <div id="form-container" class="container">
 
         <form (ngSubmit)="enviarForm(myForm)" #myForm="ngForm">
-          <p> title
+          <h3> Title
             <input type="text" name="title" [(ngModel)]="title" required />
-          </p>
-          <p> post
+          </h3>
+          <h3> Post
             <input type="text" name="content" [(ngModel)]="content" required />
-          </p>
-          <button type="submit"> submit post </button>
+          </h3>
+          <button type="submit" class=" btn-lg btn-primary" > Submit post </button>
         </form>
 
-        <img class="img-rounded" src="https://s-media-cache-ak0.pinimg.com/originals/45/1b/0d/451b0de985968999247c013f30ee67db.jpg">
+        <img class="img-rounded tux " src="https://s-media-cache-ak0.pinimg.com/originals/45/1b/0d/451b0de985968999247c013f30ee67db.jpg">
 
 
 
 
       </div>
-
+      <div class="row">
+        <footer class="col-md-12 col-md-offset-10">
+          GaasNipi Developing
+        </footer>
+      </div>
 
     </div>
 
-  </div>
-  <div class="row">
-    <footer class="col-md-12 col-md-offset-10">
-      GaasNipi Developing
-    </footer>
+
   </div>
 
 </div>
+
+
+
+
+
+
+

@@ -1,40 +1,39 @@
-#form-container {
-  width: 500px;
-  color: #2b4757;
-}
+.body{
+  background-color: #2b4757;
 
-.row {
-  margin-top: 15px;
 }
-.row.form-group {
-  padding-left: 15px;
-  padding-right: 15px;
+div {
+  margin-top: 0.5%;
 }
-.btn {
-  margin-left: 15px;
+button {
+  margin: 5px;
 }
-
-.change-link {
-  background-color: #000;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-  bottom: 0;
-  color: #fff;
-  opacity: 0.8;
-  padding: 4px;
-  position: absolute;
+p {
+  font-size: 25px;
+  margin-top: 50px;
   text-align: center;
-  width: 150px;
 }
-.change-link:hover {
-  color: #fff;
-  text-decoration: none;
+footer {
+  margin-top: 40px;
 }
-
 img {
-  width: 100px;
 }
-
-#editor-container {
-  height: 130px;
+.buttonG {
+  margin-bottom: 50px;
+}
+.home1 {
+  margin-left: 50px;
+}
+h3 {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 30px;
+}
+li{
+    font-size: 20px;
+    margin-top: 40px;
+    list-style: none;
+}
+.tux{
+  width: 100px;
 }
