@@ -17,8 +17,9 @@ export class PostService {
   }
 
   add(post) {
+    console.log(post)
     return this.http
-      .put(`${this.BASE_URL}/post/${post.id}`, post)
+      .post(`${this.BASE_URL}/post/newpost`, post)
       .map(res => res.json());
   }
 

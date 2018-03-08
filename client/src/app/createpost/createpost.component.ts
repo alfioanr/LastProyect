@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {PostService} from '../../services/post.service'
+import { Component, OnInit } from "@angular/core";
+import { PostService } from "../../services/post.service";
 import { HttpModule, Http } from "@angular/http";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-createpost",
@@ -8,13 +9,23 @@ import { HttpModule, Http } from "@angular/http";
   styleUrls: ["./createpost.component.css"]
 })
 export class CreatepostComponent implements OnInit {
-  posts = [];
+  postNew: any;
   constructor(private post: PostService) {}
 
-  ngOnInit() {
-    this.post.add(this.post).subscribe(posts => {
-      this.post = posts;
-      console.log(this.posts);
+  ngOnInit() {}
+
+  enviarForm(p) {
+    console.log("Tonterias a mil", p.form.controls.title.value);
+    console.log("Tonterias a mil", p.form.controls.content.value);
+    this.postNew = {
+ 
+      title: p.form.controls.title.value,
+      content: p.form.controls.content.value
+    };
+    
+    this.post.add(this.postNew).subscribe(posts => {
+      console.log(this.post);
     });
+    console.log("holis")
   }
 }
